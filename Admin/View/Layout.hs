@@ -20,15 +20,21 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     {stylesheets}
     {scripts}
 
-    <title>App</title>
+    <title>Admin</title>
 </head>
 <body>
+    {loginLogoutButton}
     <div class="container mt-4">
         {renderFlashMessages}
         {inner}
     </div>
 </body>
 |]
+    where
+        loginLogoutButton :: Html
+        loginLogoutButton = case (get #user viewContext) of
+            Just user -> [hsx|<a class="js-delete js-delete-no-confirm text-secondary" href={DeleteSessionAction}>Logout</a>|]
+            Nothing -> [hsx||]
 
 stylesheets = do
     when (isDevelopment FrameworkConfig.environment) [hsx|
