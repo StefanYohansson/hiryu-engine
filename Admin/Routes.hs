@@ -8,3 +8,6 @@ instance AutoRoute SessionsController
 instance AutoRoute UsersController
 type instance ModelControllerMap AdminApplication User = UsersController
 
+instance AutoRoute AdminsController
+type instance ModelControllerMap AdminApplication Admin = AdminsController
+

@@ -2,7 +2,7 @@ module Admin.View.Sessions.New where
 import Admin.View.Prelude
 import IHP.AuthSupport.View.Sessions.New
 
-instance View (NewView User) ViewContext where
+instance View (NewView Admin) ViewContext where
     html NewView { .. } = [hsx|
         <div class="h-100" id="sessions-new">
             <div class="d-flex align-items-center">
@@ -17,7 +17,7 @@ instance View (NewView User) ViewContext where
         </div>
     |]
 
-renderForm :: User -> Html
+renderForm :: Admin -> Html
 renderForm user = [hsx|
     <form method="POST" action={CreateSessionAction}>
         <div class="form-group">

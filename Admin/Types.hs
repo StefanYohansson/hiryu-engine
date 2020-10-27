@@ -10,14 +10,15 @@ import IHP.LoginSupport.Types
 
 data AdminApplication = AdminApplication deriving (Eq, Show)
 
-instance HasNewSessionUrl User where
-    newSessionUrl _ = "/NewSession"
+instance HasNewSessionUrl Admin where
+    newSessionUrl _ = "/admin/NewSession"
 
 data ViewContext = ViewContext
     { requestContext :: ControllerSupport.RequestContext
     , flashMessages :: [IHP.Controller.Session.FlashMessage]
     , controllerContext :: ControllerSupport.ControllerContext
     , layout :: Layout
+    , user :: Maybe Admin
     }
 
 data SessionsController
@@ -35,4 +36,14 @@ data UsersController
     | EditUserAction { userId :: !(Id User) }
     | UpdateUserAction { userId :: !(Id User) }
     | DeleteUserAction { userId :: !(Id User) }
+    deriving (Eq, Show, Data)
+
+data AdminsController
+    = AdminsAction
+    | NewAdminAction
+    | ShowAdminAction { adminId :: !(Id Admin) }
+    | CreateAdminAction
+    | EditAdminAction { adminId :: !(Id Admin) }
+    | UpdateAdminAction { adminId :: !(Id Admin) }
+    | DeleteAdminAction { adminId :: !(Id Admin) }
     deriving (Eq, Show, Data)
