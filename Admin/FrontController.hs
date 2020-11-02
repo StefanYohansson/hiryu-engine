@@ -7,6 +7,7 @@ import IHP.LoginSupport.Middleware
 import Admin.Controller.Sessions
 
 -- Controller Imports
+import Admin.Controller.Photos
 import Admin.Controller.Admins
 import Admin.Controller.Users
 import IHP.Welcome.Controller
@@ -16,6 +17,7 @@ instance FrontController AdminApplication where
         [ startPage WelcomeAction
         , parseRoute @SessionsController
         -- Generator Marker
+        , parseRoute @PhotosController
         , parseRoute @AdminsController
         , parseRoute @UsersController
         ]

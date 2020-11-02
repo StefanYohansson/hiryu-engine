@@ -11,3 +11,6 @@ type instance ModelControllerMap AdminApplication User = UsersController
 instance AutoRoute AdminsController
 type instance ModelControllerMap AdminApplication Admin = AdminsController
 
+instance AutoRoute PhotosController
+type instance ModelControllerMap AdminApplication Photo = PhotosController
+
